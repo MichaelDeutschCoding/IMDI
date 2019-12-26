@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="{% url 'film:homepage' %}">Welcome to IMDI</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'film:index' %}">Accounts</a>
+          </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#">{{ user.username }}</a>
+            </li>
+            {% if user.is_superuser %}
+            <li>
+                <a class="nav-link" href="{% url 'film:add-film' %}">Add a Film</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'film:add-director' %}">Add a Director</a>
+            </li>
+            {% endif %}
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts:signup' %}">This will be reported</a>
+          </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}
+Index
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/navbar_index.html' %}
+{% endblock %}
+
+{% block header %}
+INDEX - Whatever the hell that means
+{% endblock %}
+
+
+{% block content %}
+<p>Stuff</p>
+<img src="{% static 'film_app/images/cool_runnings.jpg' %}">
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

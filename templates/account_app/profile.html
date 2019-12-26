@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Profile
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/navbar_index.html' %}
+{% endblock %}
+
+{% block header %}
+Profile Page
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+<h3 class="card-title">PROFILE</h3>
+        <table class="table">
+            <tr>
+                <td>Welcome</td>
+                <td>{{ user.username }}</td>
+            <tr>
+                <td>First Name</td>
+                <td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

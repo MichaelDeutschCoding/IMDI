@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Submit Film
+{% endblock %}
+
+{% block page_styles %}
+<style>
+    #id_category {
+        height: 100px;
+        overflow-y: scroll;
+        width: 75%;
+    }
+
+    li {
+    list-style-type: none;
+    }
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+</style>
+
+<script>
+    function updateTextInput(val) {
+          document.getElementById('sliderValueDisplay').value=val;
+        }
+</script>
+{% endblock %}
+
+
+{% block navbar %}
+{% include 'partials/navbar_homepage.html' %}
+{% endblock %}
+
+{% block header %}
+    {% if 'update' in request.path %}
+        Update an Existing Film
+    {% else %}
+        Add a Film to the Database
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+ <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+     {{ form.as_p }}
+     Rating: <input type="text" disabled id="sliderValueDisplay" value=""><br>
+  <button type="submit" class="btn btn-info mt-3">Submit</button>
+ </form>
+
+
+{% endblock %}
+
+{% block footer %}
+{# include footer #}
+{% endblock %}

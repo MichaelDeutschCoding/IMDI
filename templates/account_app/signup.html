@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Sign Up{% endblock %}
+
+{% block navbar %}
+{% include 'partials/navbar_index.html' %}
+{% endblock %}
+
+{% block header %}
+Register Now for All the Benefits
+{% endblock %}
+
+{% block content %}
+<div class="card mx-auto">
+    <div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+    </div>
+</div>{% endblock %}

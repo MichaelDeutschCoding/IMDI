@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Add Director
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/navbar_homepage.html' %}
+{% endblock %}
+
+{% block header %}
+{% if 'add' in request.path %}
+Add a Director to the Database
+{% else %}
+Update an Existing Director
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+ <form method="POST">
+     {% csrf_token %}
+     {{ form.as_p }}
+  <button type="submit" class="btn btn-secondary">Add Director</button>
+ </form>
+
+
+{% endblock %}
+
+{% block footer %}
+{# include footer #}
+{% endblock %}

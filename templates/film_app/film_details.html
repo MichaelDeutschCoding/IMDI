@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Film Detail
+{% endblock %}
+
+{% block page_styles %}
+<style>
+
+</style>
+{% endblock %}
+
+
+{% block navbar %}
+{% include 'partials/navbar_homepage.html' %}
+{% endblock %}
+
+{% block header %}
+{{ film.title }}
+{% endblock %}
+
+
+{% block content %}
+<img width="70%" src="{{ film.image.url }}">
+<h2>Directed By: {{ film.director }}</h2>
+<h3>Released On: {{ film.release_date }}</h3>
+<h4>Country: {{ film.country }}</h4>
+<p>Genre: {{ film.category.all|join:", " }}</p>
+<p>Rating: {{ film.rating }}</p>
+<p> {{ film.about }}</p>
+
+{% if user.is_superuser %}
+<a class="btn btn-info" href="{% url 'film:update-film' film.pk %}">Update Film Info</a>
+<a class="btn btn-info" href="{% url 'film:update-director' film.director.pk %}">Update Director Name</a>
+
+{% endif %}
+{% endblock %}
+
+{% block footer %}
+{# include footer #}
+{% endblock %}

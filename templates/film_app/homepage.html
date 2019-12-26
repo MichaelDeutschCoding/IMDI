@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}
+Home Page
+{% endblock %}
+
+
+{% block navbar %}
+{% include 'partials/navbar_homepage.html' %}
+{% endblock %}
+
+{% block header %}
+This is Home Page!!
+{% endblock %}
+
+
+{% block content %}
+<div class="row" style="justify-content: center;">
+{% for film in films %}
+<div class="card m-3" style="width:20rem;">
+    <img class="card-img-top" src="{{ film.image.url }}">
+    <div class="card-body">
+        <h3 class="card-title"><a href="{% url 'film:film-details' film.pk %}">{{ film.title }}</a></h3>
+        <h5 class="card-subtitle mb-3">Directed by: {{ film.director }}</h5>
+        Released in: {{ film.release_date }}<br>
+        Produced in: {{ film.country }}<br>
+        <p>Genres: {{ film.category.all|join:" , " }}</p>
+        Rating: {% for _ in "x"|rjust:film.rating %}
+            <img src="{% static  'film_app/images/star.png' %}" height="20px" width="20px">
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
